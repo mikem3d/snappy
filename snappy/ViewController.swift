@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController {
     
@@ -75,11 +77,23 @@ class ViewController: UIViewController {
                     let imageView = UIImageView(image: image)
                     imageView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
                     self.view.addSubview(imageView)
+                    
+                    let imageData64 = UIImageJPEGRepresentation(image,1)
+                    let encodedImage = imageData64!.base64EncodedStringWithOptions([])
+                    
+                    let params:[String:AnyObject] = [
+                        "image": encodedImage
+                    ]
+                    
+                    //print(encodedImage)
+                    
+                    self.requestWrapper(.POST, url: "http://104.131.13.135/snappy/", params: params, callback: { (data:JSON)->Void in
+                    })
                 }
             })
         }
 
-        delay(2){
+        delay(10){
             self.captureSession!.startRunning()
             self.takePhoto()
         }
@@ -92,6 +106,18 @@ class ViewController: UIViewController {
                 Int64(delay * Double(NSEC_PER_SEC))
             ),
             dispatch_get_main_queue(), closure)
+    }
+    
+    /*
+    * HTTP request wrapper, expects JSON response
+    */
+    func requestWrapper(method: Alamofire.Method, url:String, params:[String:AnyObject]?, callback:(data:JSON)->Void){
+            
+            Alamofire.request(method, url, parameters: params, headers: nil)
+                .responseJSON { response in
+                    print(response.response)
+                    //print("response",response.data)
+            }
     }
 
     override func didReceiveMemoryWarning() {

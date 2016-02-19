@@ -12,9 +12,13 @@
 		D8AB39C11C77A0CD00957949 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8AB39BF1C77A0CD00957949 /* Main.storyboard */; };
 		D8AB39C31C77A0CE00957949 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8AB39C21C77A0CE00957949 /* Assets.xcassets */; };
 		D8AB39C61C77A0CE00957949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8AB39C41C77A0CE00957949 /* LaunchScreen.storyboard */; };
+		DCBAB29D7D490F232A6E8322 /* Pods_snappy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A753B1A833388F76BCA6E91B /* Pods_snappy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A693A72F5E09183281A2D93 /* Pods-snappy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snappy.release.xcconfig"; path = "Pods/Target Support Files/Pods-snappy/Pods-snappy.release.xcconfig"; sourceTree = "<group>"; };
+		5E4DAEE83CDA8C1BAF16F720 /* Pods-snappy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snappy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-snappy/Pods-snappy.debug.xcconfig"; sourceTree = "<group>"; };
+		A753B1A833388F76BCA6E91B /* Pods_snappy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_snappy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AB39B81C77A0CD00957949 /* snappy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = snappy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AB39BB1C77A0CD00957949 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8AB39BD1C77A0CD00957949 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCBAB29D7D490F232A6E8322 /* Pods_snappy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7851011D6FE4011D55F09087 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E4DAEE83CDA8C1BAF16F720 /* Pods-snappy.debug.xcconfig */,
+				1A693A72F5E09183281A2D93 /* Pods-snappy.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BDE46F932F1AC8F49ADB9986 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A753B1A833388F76BCA6E91B /* Pods_snappy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D8AB39AF1C77A0CD00957949 = {
 			isa = PBXGroup;
 			children = (
 				D8AB39BA1C77A0CD00957949 /* snappy */,
 				D8AB39B91C77A0CD00957949 /* Products */,
+				7851011D6FE4011D55F09087 /* Pods */,
+				BDE46F932F1AC8F49ADB9986 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D8AB39CA1C77A0CE00957949 /* Build configuration list for PBXNativeTarget "snappy" */;
 			buildPhases = (
+				5270E703C1C838D0FB3047A9 /* Check Pods Manifest.lock */,
 				D8AB39B41C77A0CD00957949 /* Sources */,
 				D8AB39B51C77A0CD00957949 /* Frameworks */,
 				D8AB39B61C77A0CD00957949 /* Resources */,
+				CBEEFE5D6390F12338DFBFDB /* Embed Pods Frameworks */,
+				C5261D0512E6580AA9977085 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5270E703C1C838D0FB3047A9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C5261D0512E6580AA9977085 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-snappy/Pods-snappy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBEEFE5D6390F12338DFBFDB /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-snappy/Pods-snappy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D8AB39B41C77A0CD00957949 /* Sources */ = {
@@ -247,6 +322,7 @@
 		};
 		D8AB39CB1C77A0CE00957949 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E4DAEE83CDA8C1BAF16F720 /* Pods-snappy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = snappy/Info.plist;
@@ -258,6 +334,7 @@
 		};
 		D8AB39CC1C77A0CE00957949 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A693A72F5E09183281A2D93 /* Pods-snappy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = snappy/Info.plist;
@@ -286,6 +363,7 @@
 				D8AB39CC1C77A0CE00957949 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

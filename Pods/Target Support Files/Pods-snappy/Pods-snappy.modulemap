@@ -1,0 +1,6 @@
+framework module Pods_snappy {
+  umbrella header "Pods-snappy-umbrella.h"
+
+  export *
+  module * { export * }
+}
